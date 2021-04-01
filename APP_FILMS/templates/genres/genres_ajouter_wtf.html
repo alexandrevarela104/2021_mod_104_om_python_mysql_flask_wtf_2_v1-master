@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} Ajouter un GENRE (WTF) {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Ajouter un nouveau GENRE (WTForms)
+			</p>
+			<form action="" method="POST" novalidate>
+				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
+				{{ form.hidden_tag() }}
+				<div class="form-group">
+					<p>
+						{{ form.nom_utilisateur_wtf.label }}<br>
+						{{ form.nom_utilisateur_wtf(size=32) }}<br>
+						{% for error in form.nom_utilisateur_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.email_wtf.label }}<br>
+						{{ form.email_wtf(size=32) }}<br>
+						{% for error in form.email_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.mot_de_passe_wtf.label }}<br>
+						{{ form.mot_de_passe_wtf(size=32) }}<br>
+						{% for error in form.mot_de_passe_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+				</div>
+				{{ form.submit(class="btn btn-primary") }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
